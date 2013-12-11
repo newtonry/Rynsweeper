@@ -1,0 +1,188 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family:Trebuchet MS;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*NEED TO FIX THE HEIGHT OF THE GAME BOARD WITH ADDED TOPBAR*/
+#alert-message {
+/*	position: absolute;*/
+	width: 100%;
+	font-size: 40px;
+	text-align: center;
+}
+
+#alert-message .success {
+	color: green;
+	display: block;
+}
+
+#alert-message .fail {
+	color: red;
+	display: block;
+}
+
+#board {
+	position: relative;
+}
+
+#game-board {
+	width: 496px;
+	height: 571px;
+	background-color: #AAA;
+	border: 5px;
+	border-style: solid;
+	margin-top: 2.5%;
+	margin-left: 5%;
+}
+
+#top-nav {
+	height: 75px;
+}
+
+#top-nav li {
+	float:left;
+	font-size: 20px;
+	list-style: none;
+	text-align: center;
+	position: relative;
+	width: 33%;
+}
+
+.tile {
+	background-color: #CCCCCC;
+	width: 58.5px;
+	height: 58.5px;
+	border-width: 2px;
+/*	border-color: black;*/	
+	border-style: outset;
+	float: left;
+	display: table;
+	
+}
+
+.revealed {
+	background-color: #DDDDDD;
+}
+
+.mine {
+	background-image:url('../images/bomb1.png');
+	background-size: 100% auto;
+}
+
+.hit-mine {
+	background-color: red;	
+}
+
+.flagged {
+	background-image:url('../images/red-flag.png');
+	background-size: 100% auto;
+}
+
+.green-button {
+/*	background-color:#44c767;*/	
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	padding-top: 2%;
+	text-decoration:none;
+	text-shadow:0px 1px 7px #FFFFFF;
+}
+.green-button:hover {
+/*	background-color:#5cbf2a;*/
+}
+.green-button:active {
+	position:relative;
+	top:1px;
+}
+
+.nearMines-0, 
+.nearMines-1, 
+.nearMines-2, 
+.nearMines-3, 
+.nearMines-4, 
+.nearMines-5, 
+.nearMines-6, 
+.nearMines-7, 
+.nearMines-8 {
+	border-style: solid;
+	border-color: #666666;
+	font-size: 2em;
+}
+
+.nearMines-0 {
+  color: #DDDDDD;
+}
+
+.nearMines-1 {
+  color: blue;
+}
+
+.nearMines-2 {
+  color: green;
+}
+
+.nearMines-3, .nearMines-4, .nearMines-5, .nearMines-6, .nearMines-7, .nearMines-8 {
+  color: red;
+}
+
+.cell {
+  display: table-cell;
+  vertical-align:middle;
+	text-align: center;
+}
+
+.row {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.smiley {
+	padding-top: 4%;
+	-moz-transform: rotate(90.0deg);  /* FF3.5+ */
+	-o-transform: rotate(90.0deg);  /* Opera 10.5 */
+	-webkit-transform: rotate(90.0deg);  /* Saf3.1+, Chrome */
+	filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */	
+	
+}
