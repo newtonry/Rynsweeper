@@ -46,12 +46,13 @@ table {
 /*NEED TO FIX THE HEIGHT OF THE GAME BOARD WITH ADDED TOPBAR*/
 #alert-message {
 /*	position: absolute;*/
-	width: 100%;
-	font-size: 40px;
+	font-size: 25px;
+	height: 20px;
+	margin-top: 30px;
 	text-align: center;
 }
 
-#alert-message .success {
+/*#alert-message .success {
 	color: green;
 	display: block;
 }
@@ -60,7 +61,7 @@ table {
 	color: red;
 	display: block;
 }
-
+*/
 #board {
 	position: relative;
 }
@@ -86,18 +87,17 @@ table {
 	text-align: center;
 	position: relative;
 	width: 33%;
+	height: 25px;
 }
 
 .tile {
 	background-color: #CCCCCC;
-	width: 58.5px;
-	height: 58.5px;
 	border-width: 2px;
-/*	border-color: black;*/	
 	border-style: outset;
-	float: left;
 	display: table;
-	
+	float: left;
+	height: 58.5px;	
+	width: 58.5px;
 }
 
 .revealed {
@@ -113,12 +113,23 @@ table {
 	background-color: red;	
 }
 
+.face {
+	height: 25px;
+	background-image:url("../images/face-sprite.png");
+	background-repeat:no-repeat;
+	background-position: center 0px;
+	overflow:hidden;
+}
+.face:active {
+	background-position: center -25px;
+}
+
 .flagged {
 	background-image:url('../images/red-flag.png');
 	background-size: 100% auto;
 }
 
-.green-button {
+.nav-button {
 /*	background-color:#44c767;*/	
 	display:inline-block;
 	cursor:pointer;
@@ -127,10 +138,10 @@ table {
 	text-decoration:none;
 	text-shadow:0px 1px 7px #FFFFFF;
 }
-.green-button:hover {
+.nav-button:hover {
 /*	background-color:#5cbf2a;*/
 }
-.green-button:active {
+.nav-button:active {
 	position:relative;
 	top:1px;
 }
@@ -177,12 +188,16 @@ table {
 	margin: 0 auto;
 }
 
+
 .smiley {
-	padding-top: 4%;
-	-moz-transform: rotate(90.0deg);  /* FF3.5+ */
-	-o-transform: rotate(90.0deg);  /* Opera 10.5 */
-	-webkit-transform: rotate(90.0deg);  /* Saf3.1+, Chrome */
-	filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */	
 	
+	
+}
+
+.fail {
+	background-color: red;
+}
+
+.success {
+	background-color: green;
 }

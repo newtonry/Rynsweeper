@@ -8,7 +8,7 @@
 		this.board = new Minesweeper.Board();
 		this.board.generateBoard();
 		this.canvas = canvas;
-		this.setupCanvas();		
+		this.setupCanvas();
 	};
 	
 	Game.prototype.setupCanvas = function() {
@@ -26,8 +26,6 @@
 
 		this.canvas.find(".tile").width(blockSize - borderWidthTotal);
 		this.canvas.find(".tile").height(blockSize - borderWidthTotal);
-		
-		// this.canvas.find('#alert-message').css('margin-top')
 		
 		this.printGame();
 		
@@ -66,11 +64,11 @@
 			that.printGame();
 		});
 				
-		this.canvas.find("#smiley-button").click(function() {
+		this.canvas.find("#smiley-button").click(function() {			
 			if (that.board.isGameWon()) {
-				that.canvas.find("#alert-message").addClass("success").html("You win!");
+				that.endGame("success", "You win!");
 			} else {
-				that.canvas.find("#alert-message").addClass("fail").html("You lose!");
+				that.endGame("fail", "You lose!");
 			}
 		});
 	};
@@ -84,7 +82,7 @@
 			
 			if (this.board.isTileMine(x,y)) {
 				$(uiTile).addClass('hit-mine');
-				this.canvas.find("#alert-message").addClass("fail").html("You've exploded!");
+				this.endGame("fail", "You've exploded!");
 			}
 		
 			this.printGame();
@@ -98,6 +96,17 @@
 		this.board.flagTile(x,y);		
 		this.printGame();
 	}
+	
+	Game.prototype.endGame = function(outcome, message) {		
+		if (outcome === "success") {
+			this.canvas.find("#top-nav").addClass("success");
+		} else if (outcome === "fail") {
+			this.canvas.find('.face').css("background-position", "center -50px");
+			this.canvas.find("#top-nav").addClass("fail");
+		}
+		this.canvas.find("#alert-message").html(message);
+		
+	};
 	
 	Game.prototype.printGame = function() {
 		this.printBoard();
@@ -132,4 +141,5 @@
 	Game.prototype.printTopNav = function() {
 		this.canvas.find('.flags-left').html(this.board.getFlagsLeft());
 	};
+	
 })(this);
