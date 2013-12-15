@@ -12,33 +12,40 @@
 	};
 	
 	Game.prototype.setupCanvas = function() {
+		this.generateBoard();
+		this.resizeTiles();
+		this.printGame();
+		this.setupButtons();
+		this.resetClone = this.canvas.clone(true);
+	};
+
+	Game.prototype.generateBoard = function() {
+		this.canvas.find("#board").empty();
 		for(var x = 0; x < this.board.size; x++) {
 		  this.canvas.find("#board").append("<div id='row-" + x + "' class='row'></div>");
 			for(var y = 0; y < this.board.size; y++) {
 			  this.canvas.find("#row-" + x).append("<div id='tile-" + x + "-" + y + "' class='tile' data-x='" + x + "' data-y='" + y + "'></div>");
 			}
 		}
+	};
 
-		var borderWidthTotal = 2 * parseInt($(".tile").css('border-width'));
+	Game.prototype.resizeTiles = function() {
+		var borderWidthTotal = 2 * parseInt(this.canvas.find('.tile').css('border-right-width'));
 		var blockSize = this.canvas.find("#board").width() / this.board.size;
 		this.canvas.find(".row").height(blockSize);
 
-
 		this.canvas.find(".tile").width(blockSize - borderWidthTotal);
 		this.canvas.find(".tile").height(blockSize - borderWidthTotal);
-		
-		this.printGame();
-		
-		this.setupButtons();
 	};
 
 	Game.prototype.setupButtons = function() {
 		var that = this;
-		
+
 		this.canvas.bind("contextmenu", function(e) {
 		    return false;
 		});
 
+		//doesn't account for control click on macbook
 		this.canvas.find(".tile").mousedown(function(e) {
 			switch (e.which) {
         case 1:
@@ -64,7 +71,7 @@
 			that.printGame();
 		});
 				
-		this.canvas.find("#smiley-button").click(function() {			
+		this.canvas.find("#smiley-button").click(function(e) {	
 			if (that.board.isGameWon()) {
 				that.endGame("success", "You win!");
 			} else {
@@ -106,7 +113,18 @@
 		}
 		this.canvas.find("#alert-message").html(message);
 		
+		//need to remove old listener from smiley button too
+		that = this;
+		this.canvas.find("#smiley-button").click(function() {
+			that.reset();
+		});
 	};
+	
+	Game.prototype.reset = function() {
+		var canvasId = this.canvas.attr('id');
+		$('#' + canvasId).html(this.resetClone.html());
+		this.start(this.canvas);
+	}
 	
 	Game.prototype.printGame = function() {
 		this.printBoard();
@@ -141,5 +159,4 @@
 	Game.prototype.printTopNav = function() {
 		this.canvas.find('.flags-left').html(this.board.getFlagsLeft());
 	};
-	
 })(this);

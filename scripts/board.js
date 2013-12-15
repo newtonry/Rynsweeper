@@ -84,10 +84,7 @@
 		if ((!this.grid[x][y].revealed || this.grid[x][y].isMine) && this.getFlagsLeft() > 0) { //the isMine allows the user to win if cheating
 			this.grid[x][y].flagged = !this.grid[x][y].flagged; //flags & unflags
 		}
-		
-		
 	};
-	
 	
 	Board.prototype.showMines = function(revealed) {
 		for(var i = 0; i < this.minePositions.length; i++) {
@@ -136,5 +133,4 @@
 		}
 		return true
 	};
-	
 })(this);

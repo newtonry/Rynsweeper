@@ -96,8 +96,8 @@ table {
 	border-style: outset;
 	display: table;
 	float: left;
-	height: 58.5px;	
-	width: 58.5px;
+/*	height: 58.5px;	
+	width: 58.5px;*/
 }
 
 .revealed {
