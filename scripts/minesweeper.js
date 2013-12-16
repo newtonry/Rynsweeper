@@ -1,11 +1,11 @@
 (function(root) {
 	var Minesweeper = root.Minesweeper = (root.Minesweeper || {});
 
-	//add options
+	//Minesweeper.Game controls the UI and tells the board what to do
 	var Game = Minesweeper.Game = function() {};
 	
-	Game.prototype.start = function(canvas) {
-		this.board = new Minesweeper.Board();
+	Game.prototype.start = function(canvas, size, numMines) {
+		this.board = new Minesweeper.Board(size, numMines);
 		this.board.generateBoard();
 		this.canvas = canvas;
 		this.setupCanvas();
@@ -45,7 +45,6 @@
 		    return false;
 		});
 
-		//doesn't account for control click on macbook
 		this.canvas.find(".tile").mousedown(function(e) {
 			switch (e.which) {
         case 1:
@@ -124,7 +123,7 @@
 	Game.prototype.reset = function() {
 		var canvasId = this.canvas.attr('id');
 		$('#' + canvasId).html(this.resetClone.html());
-		this.start(this.canvas);
+		this.start(this.canvas, this.board.size, this.board.numMines);
 	}
 	
 	Game.prototype.printGame = function() {
