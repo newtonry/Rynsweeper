@@ -71,7 +71,8 @@
 			that.printGame();
 		});
 				
-		this.canvas.find("#smiley-button").click(function(e) {	
+		this.canvas.find("#smiley-button").click(function(e) {
+			$(this).unbind();
 			if (that.board.isGameWon()) {
 				that.endGame("success", "You win!");
 			} else {
