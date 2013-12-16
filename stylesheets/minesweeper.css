@@ -96,7 +96,7 @@ table {
 }
 
 .hit-mine {
-	background-color: red;	
+	background-color: #D94541;	
 }
 
 .face {
@@ -178,9 +178,9 @@ table {
 }
 
 .fail {
-	background-color: red;
+	background-color: #D94541;
 }
 
 .success {
-	background-color: green;
+	background-color: #DFF0D8;
 }
