@@ -33,7 +33,7 @@
 		var borderWidthTotal = 2 * parseInt(this.canvas.find('.tile').css('border-right-width'));
 		var blockSize = this.canvas.find("#board").width() / this.board.size;
 		this.canvas.find(".row").height(blockSize);
-
+		
 		this.canvas.find(".tile").width(blockSize - borderWidthTotal);
 		this.canvas.find(".tile").height(blockSize - borderWidthTotal);
 	};
@@ -84,7 +84,7 @@
 		var x = this.canvas.find(uiTile).data('x');
 		var y = this.canvas.find(uiTile).data('y');
 		
-		if (!this.board.grid[x][y].flagged) {
+		if ((x !== undefined && y !== undefined) && !this.board.grid[x][y].flagged) {
 			this.board.revealTile(x, y);
 			
 			if (this.board.isTileMine(x,y)) {
