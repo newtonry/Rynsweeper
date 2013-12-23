@@ -113,7 +113,6 @@
 		}
 		this.canvas.find("#alert-message").html(message);
 		
-		//need to remove old listener from smiley button too
 		that = this;
 		this.canvas.find("#smiley-button").click(function() {
 			that.reset();
